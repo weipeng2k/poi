@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.murdock.tools.poi.Entry;
 import com.murdock.tools.poi.SourceEntry;
 import com.murdock.tools.poi.support.Input;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -67,6 +68,7 @@ public class InputImpl implements Input {
 
                 sourceEntry.getPicUrls().stream()
                         .filter(Objects::nonNull)
+                        .filter(StringUtils::isNotBlank)
                         .map(url -> {
                             Entry entry = new Entry();
                             entry.setUrl(url);
